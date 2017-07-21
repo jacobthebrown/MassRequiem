@@ -1,0 +1,325 @@
+html, 
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+	
+	background-color: #000000;
+	
+}
+
+#navBar {
+  
+  background-color: rgba(0,0,0,0);
+  
+}
+
+.quote-section {
+  text-align: center;
+}
+
+.quote-section .quote-text {
+  font-weight: 300;
+  color: #ffffff;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: -5px;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 1.5em;
+}
+
+@media print, screen and (min-width: 40em) {
+  .quote-section .quote-text {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+@media print, screen and (min-width: 64em) {
+  .quote-section .quote-text {
+    padding-left: 180px;
+    padding-right: 180px;
+    font-size: 1.8em;
+  }
+}
+
+@media screen and (min-width: 75em) {
+  .quote-section .quote-text {
+    padding-left: 300px;
+    padding-right: 300px;
+  }
+}
+
+.quote-section .quote-source {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding-bottom: 0;
+  margin-bottom: 0.2em;
+  font-size: 1.0em;
+}
+
+.quote-section .quote-source-context {
+  display: block;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.8em;
+}
+
+.quote-section .slick-slider {
+  margin-bottom: 0px;
+}
+
+.quote-content {
+  width: 100%;
+  text-align: center;
+}
+
+#navBar {
+  
+  width: 100%;
+  height:15%;
+  margin: auto;
+  color:white;
+  display:flex;
+  
+  
+}
+
+#navBar_bottom {
+
+    width: 100%;
+    height:15%;
+    margin: auto;
+    color: white;
+    display: flex;
+  
+}
+
+.navBarButton {
+  
+  border-bottom: none;
+  background-color: rgba(0,0,0,1.0);
+  margin: 0%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  
+}
+
+.navBarElement {
+
+    font-size: 25px;
+    margin: 0;
+  
+}
+
+.navBarSection {
+  
+    width: 50%;
+    display: inline-grid;
+    border: 0;
+    color: white;
+  
+}
+
+.navBarRight {
+  
+    width: 50%;
+    display: inline-grid;
+    border: 0;
+  
+}
+
+.navBarSection-left {
+  
+  text-align:left;
+  display: inline;
+  
+}
+
+.navBarSection-right {
+  
+  text-align:right;
+  display: inline-block;
+  
+  
+}
+
+.navBarIcons {
+  
+  color:white;
+  
+}
+
+.whiteout {
+  
+  background-color: rgba(255,255,255,1.0);
+  visibility: visible;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  visibility: hidden;
+  
+}
+
+.whiteout-formElement {
+  
+  width:100%;
+  margin: auto;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 32px;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 100%;
+  padding: 0 calc(10% + 27px);
+}
+
+.no-resize, .resize {
+    width: auto;
+    height: auto;
+    border: 1px solid #000;
+    color: #FFF;
+    float: left;
+    margin-left: 10px;
+    font-size: 15px;
+    text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 27px;
+  height: 27px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 6px outset #ffffff;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #ffffff;
+}
+::-webkit-scrollbar-track {
+  background: #666666;
+  border: 60px none #ffffff;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+#whiteout-closeIcon {
+  
+  display:absolute;
+  cursor:pointer;
+  right: 0px;
+  top: 0px;
+  
+}
+
+.textArea {
+  
+  width:100%;
+  height: 70%;
+  padding: 10%;
+  color: white;
+  text-align: center;
+  overflow: overlay;
+  
+}
+
+.white-closeDiv {
+ 
+   text-align:right; 
+  
+}
+
+.bottomSection {
+  
+  margin: auto 0 0 0;
+  
+}
+
+#searchForm {
+  
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  width:0%;
+  opacity: 0.0;
+  display: initial !important;
+  margin: 0 !important;
+  box-shadow: inset 0 0px 0px rgba(10, 10, 10, 0.0) !important;
+  border-top: 1px solid #000 !important;
+  border-right: 1px solid #000 !important;
+  border-left: 1px solid #000 !important;
+  border-bottom: 1px solid #FFF !important;
+  background-color: #000 !important;
+  flex-grow: 90;
+  height: 50px;
+  color: white;
+  
+}
+
+.navBar-specialDiv {
+  
+  display:inline-flex;
+  
+}
+
+/*
+
+Credit for animated check box inputs
+
+CSS "Ripple/Wave" checkbox and radio button
+By Matt Sisto
+
+https://codepen.io/msisto/pen/lCofE
+
+*/
+
+.option-input {
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  height: 40px;
+  width: 40px;
+  min-height: 40px;
+  min-width: 40px;
+  -webkit-transition: all 0.15s ease-out 0s;
+  -moz-transition: all 0.15s ease-out 0s;
+  transition: all 0.15s ease-out 0s;
+  background: #FFF;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  outline: 1px solid #cacaca;
+  position: relative;
+  z-index: 1000;
+}

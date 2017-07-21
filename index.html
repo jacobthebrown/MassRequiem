@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+<link rel="stylesheet" type="text/css" href="css/app.css">
+<link rel="stylesheet" type="text/css" href="css/foundation.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="scss/foundation/_settings.scss">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<script src="js/vendor/jquery.js"></script>
+<script src="https://fastcdn.org/FlowType.JS/1.1/flowtype.js"></script>
+<script src="js/vendor/foundation.min.js"></script>
+<script src="js/vendor/what-input.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.ui.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/index.css">
+	
+<script src="js/index_js.js"></script>
+	
+</head>
+
+<div id="whiteout-screen" class="whiteout">
+  
+</div>
+
+<div id="whiteout-add" class="whiteout">
+
+  <form class="whiteout-formElement" autocorrect="off" autocomplete="off">
+    
+      
+    <div class="white-closeDiv">
+      <button id="white-closeButton">
+      <i id="whiteout-closeIcon" class="fa fa-times-circle-o" aria-hidden="true"></i>
+      </button>
+    </div>
+    
+    <div class="checkboxDiv_text">Would you like to add a foreword?</div>
+    <input type="checkbox" class="option-input checkbox checkboxDiv_checkbox" /> 
+    <br>
+    <div class="small-3 columns">
+      <span class="prefix quote-text">Who do you wish to be remembered?</span>
+    </div>
+    <div class="small-9 columns">
+      <input type="text" placeholder="A loved one. My goldfish. The world." autocorrect="off">
+    </div>
+    <br>
+    <div class="small-3 columns">
+      <span class="prefix quote-text">Who do you wish to be remembered?</span>
+    </div>
+    <input type="text" placeholder="A loved one. My goldfish. The world." autocorrect="off">
+    
+    <div class="small-9 columns">
+    </div>
+    <br>
+    <div class="small-3 columns">
+      <span class="prefix">Who are you?</span>
+    </div>
+    <div class="small-9 columns">
+      <input type="text" placeholder="Anonymous" autocorrect="off">
+    </div>
+    <br>
+    <div class="small-3 columns">
+      <span class="prefix">What is your Reqiuem?</span>
+    </div>
+    <div class="small-9 columns">
+      <input type="text" placeholder="Anonymous" autocorrect="off">
+    </div>
+  </form>
+
+</div>
+<body>
+<div class="row" id="navBar" >
+  <div class="navBarSection topSection navBarSection-left">
+    <button id="navBarButton-add" class="navBarButton" type="button">
+      <i class="navBarIcons fa fa-plus-circle navBarElement" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="navBarSection topSection navBarSection-right">
+    <div class="navBar-specialDiv">
+    <input id="searchForm" type="text" placeholder="Reqiuem ID">
+    <button id="navBarButton-find" class="navBarButton" type="button">
+      <i class="navBarIcons fa fa-compass navBarElement" aria-hidden="true"></i>
+    </button>
+    </div>
+  </div>
+</div>
+
+<div class="row textArea">
+  <div class="quote-section ">
+    <span class="quote-source-context">Traveled from San Francisco to Lake Tahoe</span>
+  </div>
+  <br>
+  <div>
+    Bacon ipsum dolor amet rump pork loin pork tri-tip chicken tongue cow pancetta. Ham hock pork chop turkey beef ribs bacon, ribeye picanha doner salami tenderloin. Pork loin andouille flank pork drumstick. Leberkas doner short loin ham hock landjaeger swine bacon burgdoggen. Alcatra landjaeger shank, corned beef chicken jowl ham hock pork short loin pig kevin tongue.
+    Bacon ipsum dolor amet rump pork loin pork tri-tip chicken tongue cow pancetta. Ham hock pork chop turkey beef ribs bacon, ribeye picanha doner salami tenderloin. Pork loin andouille flank pork drumstick. Leberkas doner short loin ham hock landjaeger swine bacon burgdoggen. Alcatra landjaeger shank, corned beef chicken jowl ham hock pork short loin pig kevin tongue.
+  </div>
+  <br>
+    <div class="quote-section ">
+      <p class="quote-source">Gavin Newman</p>
+      <span class="quote-source-context">Traveled from San Francisco to Lake Tahoe</span>
+    </div>
+</div>
+  
+
+<div class="row" id="navBar_bottom">
+  <div class="navBarSection bottomSection navBarSection-left">
+    <button id="navBarButton-shuffle" class="navBarButton" type="button">
+      <i class="navBarIcons fa fa-random navBarElement" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="navBarSection bottomSection navBarSection-right">
+    <button id="navBarButton-helpMenu" class="navBarButton" type="button">
+      <i class="navBarIcons fa fa-question-circle navBarElement" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
+
+</body>
+
+</html>
