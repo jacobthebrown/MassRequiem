@@ -78,10 +78,28 @@ $(document).ready(function() {
     
   })
   
-$('.textArea').flowtype({
- maxFont   : 25,
- fontRatio : 30
-});
-
+  $('.textArea').flowtype({
+   maxFont   : 25,
+   fontRatio : 30
+  });
+  
+  
+  $('.option-input').click(function() {
+    
+    var domCheckbox = $(this).get(0);
+    
+    if (domCheckbox.isChecked === undefined)
+    domCheckbox.isChecked = false;
+    
+    domCheckbox.isChecked = !(domCheckbox.isChecked);
+    
+    var domCheckboxIcon = $(this).find(".checkboxIcon").get(0);
+    
+    if (domCheckbox.isChecked)
+      domCheckboxIcon.style.color = "#000"
+    else
+      domCheckboxIcon.style.color ="#FFF";
+    
+  });
 
 });

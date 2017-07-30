@@ -9,7 +9,10 @@
 <link rel="stylesheet" type="text/css" href="css/foundation.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="scss/foundation/_settings.scss">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Alegreya|Lora:400,700" rel="stylesheet">
 <script src="js/vendor/jquery.js"></script>
 <script src="https://fastcdn.org/FlowType.JS/1.1/flowtype.js"></script>
 <script src="js/vendor/foundation.min.js"></script>
@@ -31,44 +34,57 @@
 
   <form class="whiteout-formElement" autocorrect="off" autocomplete="off">
     
-      
+    <br>
     <div class="white-closeDiv">
       <button id="white-closeButton">
       <i id="whiteout-closeIcon" class="fa fa-times-circle-o" aria-hidden="true"></i>
       </button>
     </div>
+    <br>
     
-    <div class="checkboxDiv_text">Would you like to add a foreword?</div>
-    <input type="checkbox" class="option-input checkbox checkboxDiv_checkbox" /> 
+    <div class="small-3 columns">
+      <span class="prefix quote-text">Who is this Reqiuem for?</span>
+    </div>
+    <input class="whiteout-formInputFormatting" type="text" placeholder="A loved one. My childhood pet. The world." autocorrect="off">
+    <!--<div class="checkboxDiv_text">Foreword:</div>-->
     <br>
     <div class="small-3 columns">
       <span class="prefix quote-text">Who do you wish to be remembered?</span>
     </div>
     <div class="small-9 columns">
-      <input type="text" placeholder="A loved one. My goldfish. The world." autocorrect="off">
-    </div>
-    <br>
-    <div class="small-3 columns">
-      <span class="prefix quote-text">Who do you wish to be remembered?</span>
-    </div>
-    <input type="text" placeholder="A loved one. My goldfish. The world." autocorrect="off">
-    
-    <div class="small-9 columns">
+      <input class="whiteout-formInputFormatting" type="text" placeholder="A loved one. My goldfish. The world." autocorrect="off">
     </div>
     <br>
     <div class="small-3 columns">
       <span class="prefix">Who are you?</span>
     </div>
     <div class="small-9 columns">
-      <input type="text" placeholder="Anonymous" autocorrect="off">
+      <input class="whiteout-formInputFormatting" type="text" placeholder="Anonymous" autocorrect="off">
     </div>
     <br>
     <div class="small-3 columns">
       <span class="prefix">What is your Reqiuem?</span>
     </div>
     <div class="small-9 columns">
-      <input type="text" placeholder="Anonymous" autocorrect="off">
+      <input class="whiteout-formInputFormatting" type="text" placeholder="Anonymous" autocorrect="off">
     </div>
+    <br>
+        <div class="whiteout-formCheckboxParent">
+        <div class="option-input checkbox checkboxDiv_checkbox whiteout-formCheckboxButton" checked=false>
+          <div class="checkboxIcon">
+          X
+          </div>
+        </div>
+        <div class="whiteout-formCheckboxText">
+           I understand that this website may one day go offline but my Reqiuem will still be accessiable via the Smart Contract located on the Ethereum Blockchain.
+        </div>
+        </div>
+    <div class="small-9 columns">
+      <br>
+    <a href="#" class="button expand fullWidth">Expanded Button</a>
+    </div>
+
+    
   </form>
 
 </div>
@@ -91,7 +107,7 @@
 
 <div class="row textArea">
   <div class="quote-section ">
-    <span class="quote-source-context">Traveled from San Francisco to Lake Tahoe</span>
+    <span class="quote-source-context">To my lovely Jenny, the only love I never knew.</span>
   </div>
   <br>
   <div>

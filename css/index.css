@@ -16,10 +16,6 @@ body {
   
 }
 
-.quote-section {
-  text-align: center;
-}
-
 .quote-section .quote-text {
   font-weight: 300;
   color: #ffffff;
@@ -66,12 +62,10 @@ body {
 
 .quote-section .quote-source-context {
   display: block;
-  font-size: 0.9em;
   font-weight: 500;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  font-size: 0.8em;
 }
 
 .quote-section .slick-slider {
@@ -160,6 +154,12 @@ body {
   
 }
 
+.fullWidth {
+  
+  width: 100%;
+  
+}
+
 .whiteout {
   
   background-color: rgba(255,255,255,1.0);
@@ -174,16 +174,47 @@ body {
   
 }
 
+.whiteout-formInputFormatting {
+  
+    min-height: 2.4375rem !important;
+    height: 4vw !important;
+  
+}
+
 .whiteout-formElement {
   
   width:100%;
   margin: auto;
   font-family: 'PT Sans', sans-serif;
-  font-size: 32px;
+  font-size: 3vw;
+  font-weight: bold;
   overflow: scroll;
   overflow-x: hidden;
   height: 100%;
   padding: 0 calc(10% + 27px);
+}
+
+.whiteout-formCheckboxButton {
+  
+    min-height: 4vw !important;
+    min-width: 4vw !important;
+    height: 4vw !important;
+    width: 4vw !important;
+    margin-right: calc(40px + 4vw) !important; 
+  
+}
+
+.whiteout-formCheckboxText {
+  
+  line-height: 4vw;
+  
+}
+
+.whiteout-formCheckboxParent {
+  
+  display: flex;
+  font-weight: 200;
+  
 }
 
 .no-resize, .resize {
@@ -244,10 +275,10 @@ body {
   
   width:100%;
   height: 70%;
-  padding: 10%;
+  padding: 5% 10% 0 10%;
   color: white;
-  text-align: center;
   overflow: overlay;
+  font-family: 'Lora', serif;
   
 }
 
@@ -322,4 +353,27 @@ https://codepen.io/msisto/pen/lCofE
   outline: 1px solid #cacaca;
   position: relative;
   z-index: 1000;
+}
+
+.option-input:hover {
+  
+  background: #eeeded;
+  
+  
+}
+
+.checkboxIcon {
+  
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    line-height: 4vw;
+    font-size: 3vw;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: bold;
+  
 }
