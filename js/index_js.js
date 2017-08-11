@@ -103,3 +103,26 @@ $(document).ready(function() {
   });
 
 });
+
+
+/* 
+global loadWeb3 
+*/
+
+function loadWeb3_callbackOnError() {
+  
+  
+}
+
+function loadWeb3_callbackOnSuccess(reqiuemApplication) {
+  
+  reqiuemApplication.contractABI = [];
+  reqiuemApplication.contractAddress =[];
+  
+  reqiuemApplication.load();
+  
+  
+}
+
+window.addEventListener('load', loadWeb3(loadWeb3_callbackOnError, loadWeb3_callbackOnSuccess));
+

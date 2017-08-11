@@ -181,6 +181,14 @@ body {
   
 }
 
+.whiteout-formInputTextboxFormatting {
+  
+    height: 30vw !important;
+    width: 100%;
+    font-size: .5em;
+  
+}
+
 .whiteout-formElement {
   
   width:100%;
