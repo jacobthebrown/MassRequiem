@@ -12,7 +12,7 @@ function loadWeb3(callbackOnError, callbackOnSuccess) {
   {
     console.log("MetaMask Found");
     window.web3 = new Web3(web3.currentProvider);
-    callbackOnSuccess(reqiuemApplication);
+    callbackOnSuccess(new requiemApplication());
     
     return;
   } 
@@ -22,40 +22,66 @@ function loadWeb3(callbackOnError, callbackOnSuccess) {
 
 }
 
-var reqiuemApplication = { 
+class requiemApplication { 
     
-    contractABI : undefined,
-    contractObj : undefined,
-    attachedContract : undefined,
-    contractAddress : undefined,
-    metaMaskAccount : undefined,
-    
-    load : function( ) {
-    
-        this.metaMaskAccount = web3.eth.accounts[0];
-        
-        if (this.metaMaskAccount === undefined) {
-            console.log("No ethereum account was found.");
-        }
-        
-        this.contractObj = web3.eth.contract(this.contractABI);
-        this.attachedContract = this.contractObj.at(this.contractAddress);
-    },
-    
-    findReqiuem : function(capsuleID) {
-        this.attachedContract.getCapsule.call(capsuleID,{from: web3.eth.accounts[0]}, function(error, result) {
-        console.log(result)
-            
-        });
-    },
-    
-    releaseReqiuem : function(message, to, from) {
-            
-            this.attachedContract.ReleaseReqiuem(message, to, from, {from:web3.eth.accounts[0], value: web3.toWei(0.01, "ether")}, function(error, transactionHash) {
-                console.log(transactionHash);
-            })
+    constructor() {
+      this.contractABI = undefined;
+      this.contractObj = undefined;
+      this.attachedContract = undefined;
+      this.contractAddress = undefined;
+      this.metaMaskAccount = undefined;
+      
     }
     
+    onLoad() {
+      
+          // do web3 checks
+      
+          this.metaMaskAccount = window.web3.eth.accounts[0];
+          
+          if (this.metaMaskAccount === undefined) {
+              console.log("No ethereum account was found.");
+          }
+          else {
+            console.log("Metamask Account loaded, " + this.metaMaskAccount)
+          }
+          
+          this.contractObj = window.web3.eth.contract(this.contractABI);
+          this.attachedContract = this.contractObj.at(this.contractAddress);
+      }
+      
+      findRequiem (capsuleID, onSuccess, onFail) {
+          this.attachedContract.GetRequiem.call(capsuleID,{from: window.web3.eth.accounts[0]}, function(error, result) {
+            
+            if (error == undefined) {
+              onSuccess(result);
+            }
+            else {
+              onFail(error);
+            }
+              
+          });
+      }
+      
+      releaseRequiem(message) {
+              
+              var finneyPrice = window.web3.toWei('25', 'finney');
+              console.log(window.web3.toWei('25', 'finney'));
+              
+              this.attachedContract.DeployRequiem(message, "", {gas: 500000, from: window.web3.eth.accounts[0], value: finneyPrice}, function(error, transactionHash) {
+                  console.log(transactionHash);
+                  console.log(window.web3.toWei('25', 'finney'));
+              });
+      }
+  
+};
+
+
+
+
+
+
+
     /**
      *             
 
@@ -87,5 +113,3 @@ var reqiuemApplication = {
           
         });
     **/
-    
-};

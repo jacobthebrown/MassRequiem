@@ -114,15 +114,37 @@ function loadWeb3_callbackOnError() {
   
 }
 
-function loadWeb3_callbackOnSuccess(reqiuemApplication) {
+function loadWeb3_callbackOnSuccess(generatedReq) {
   
-  reqiuemApplication.contractABI = [];
-  reqiuemApplication.contractAddress =[];
+  console.log(generatedReq);
+  window.requiem = generatedReq;
   
-  reqiuemApplication.load();
+  window.requiem.contractABI = [{"constant":true,"inputs":[],"name":"creator","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newPrice","type":"uint256"}],"name":"SetPrice","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"message","type":"string"},{"name":"pictureBase64","type":"string"}],"name":"DeployRequiem","outputs":[{"name":"","type":"uint256"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[],"name":"requiemCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"id","type":"uint256"}],"name":"GetRequiem","outputs":[{"name":"created","type":"bool"},{"name":"pictureBase64","type":"string"},{"name":"message","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"finneyPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}];
+  window.requiem.contractAddress ="0x2fd6b6ca2a10ff25a3cef85d32203c5011a0326c";
+  
+  window.requiem.onLoad();
+  
+  var changeText = function(text) {
+    $("#quote-textArea").text(text[2]);
+    console.log(text);
+  }
+  
+  window.requiem.findRequiem(1, changeText);
+  
   
   
 }
 
-window.addEventListener('load', loadWeb3(loadWeb3_callbackOnError, loadWeb3_callbackOnSuccess));
+window.requiem = undefined;
 
+window.addEventListener('load', function() {
+  loadWeb3(loadWeb3_callbackOnError, loadWeb3_callbackOnSuccess) 
+});
+
+function loadRequiem(id) {
+  
+  
+  
+}
+
+// RA.attachedContract.GetCurrentNonce.call(0x2, {from: RA.web3.eth.accounts[0]}, function(err, result) {console.log(result)});
