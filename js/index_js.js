@@ -1,5 +1,7 @@
 /* global $*/	
 
+window.requiem = undefined;
+
 $(document).ready(function() {
 
   $(document).foundation();
@@ -102,12 +104,41 @@ $(document).ready(function() {
     
   });
 
+$("#form-model-submit").click(function () {
+  
+  var resultSender = $("#form-model-sender").val();
+  var resultHonorary = $("#form-model-honorary").val();
+  var resultMessage = $("#form-model-message").val();
+  
+  if (window.requiem) {
+    window.requiem.releaseRequiem(resultMessage, resultSender, resultHonorary, function(args) {console.log(args)});
+  }
+  
+})
+
+$("#navBarButton-shuffle").click(function () {
+  if (window.requiem) {
+    window.requiem.getIndex(function(result) {
+      
+      var randomRequiem =  Math.random() * (result - 1) + 1;
+      
+      console.log(randomRequiem + " / " + result);
+      
+      var changeMessage = function(args) {
+        $("#quote-model-message").text(args["message"]);
+        $("#quote-model-honorary").text(args["to"]);
+        $("#quote-model-sender").text(args["from"]);
+        console.log(args);
+      }
+  
+  window.requiem.findRequiem(randomRequiem, changeMessage);
+      
+    }, function(result) {console.log(result)} );
+  }
 });
 
 
-/* 
-global loadWeb3 
-*/
+});
 
 function loadWeb3_callbackOnError() {
   
@@ -119,23 +150,23 @@ function loadWeb3_callbackOnSuccess(generatedReq) {
   console.log(generatedReq);
   window.requiem = generatedReq;
   
-  window.requiem.contractABI = [{"constant":true,"inputs":[],"name":"creator","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newPrice","type":"uint256"}],"name":"SetPrice","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"message","type":"string"},{"name":"pictureBase64","type":"string"}],"name":"DeployRequiem","outputs":[{"name":"","type":"uint256"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[],"name":"requiemCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"id","type":"uint256"}],"name":"GetRequiem","outputs":[{"name":"created","type":"bool"},{"name":"pictureBase64","type":"string"},{"name":"message","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"finneyPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}];
-  window.requiem.contractAddress ="0x2fd6b6ca2a10ff25a3cef85d32203c5011a0326c";
+  window.requiem.contractABI = [{"constant":false,"inputs":[{"name":"message","type":"string"},{"name":"from","type":"string"},{"name":"to","type":"string"}],"name":"DeployRequiem","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"index","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"index","type":"uint256"},{"indexed":false,"name":"message","type":"string"},{"indexed":false,"name":"from","type":"string"},{"indexed":false,"name":"to","type":"string"}],"name":"RequiemEvent","type":"event"}];
+  window.requiem.contractAddress ="0x48230b4231669aceb00265d1115261f8222ab997";
   
   window.requiem.onLoad();
   
-  var changeText = function(text) {
-    $("#quote-textArea").text(text[2]);
-    console.log(text);
+  var changeMessage = function(args) {
+    $("#quote-model-message").text(args["message"]);
+    $("#quote-model-honorary").text(args["to"]);
+    $("#quote-model-sender").text(args["from"]);
+    console.log(args);
   }
   
-  window.requiem.findRequiem(1, changeText);
+  window.requiem.findRequiem(2, changeMessage);
   
   
   
 }
-
-window.requiem = undefined;
 
 window.addEventListener('load', function() {
   loadWeb3(loadWeb3_callbackOnError, loadWeb3_callbackOnSuccess) 
@@ -146,5 +177,11 @@ function loadRequiem(id) {
   
   
 }
+
+/* 
+global loadWeb3 
+*/
+
+
 
 // RA.attachedContract.GetCurrentNonce.call(0x2, {from: RA.web3.eth.accounts[0]}, function(err, result) {console.log(result)});

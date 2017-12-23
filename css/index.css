@@ -302,6 +302,16 @@ body {
   
 }
 
+#searchForm-searchButton {
+    z-index: 10;
+    top: 16px;
+    padding: 3px;
+    background-repeat: no-repeat;
+    border-radius: 15px 50px;
+    padding: 15px 15px;
+    font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+}
+
 #searchForm {
   
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;

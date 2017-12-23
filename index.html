@@ -5,7 +5,6 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
-<link rel="stylesheet" type="text/css" href="css/app.css">
 <link rel="stylesheet" type="text/css" href="css/foundation.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="scss/foundation/_settings.scss">
@@ -44,30 +43,22 @@
     <br>
     
     <div class="small-3 columns">
-      <span class="prefix quote-text">Who is this Reqiuem for?</span>
+      <span class="prefix quote-text">Who is this Reqiuem for? Give a foreword in honor of them.</span>
     </div>
-    <input class="whiteout-formInputFormatting" type="text" placeholder="A loved one. My childhood pet. The world." autocorrect="off">
-    <!--<div class="checkboxDiv_text">Foreword:</div>-->
-    <br>
-    <div class="small-3 columns">
-      <span class="prefix quote-text">Who do you wish to be remembered?</span>
-    </div>
-    <div class="small-9 columns">
-      <input class="whiteout-formInputFormatting" type="text" placeholder="A loved one. My goldfish. The world." autocorrect="off">
-    </div>
+    <input id="form-model-honorary" class="whiteout-formInputFormatting" type="text" placeholder="To my uncle Jim" autocorrect="off">
     <br>
     <div class="small-3 columns">
       <span class="prefix">Who are you?</span>
     </div>
     <div class="small-9 columns">
-      <input class="whiteout-formInputFormatting" type="text" placeholder="Anonymous" autocorrect="off">
+      <input id="form-model-sender" class="whiteout-formInputFormatting" type="text" placeholder="(Leave Blank for Anonymous)" autocorrect="off">
     </div>
     <br>
     <div class="small-3 columns">
       <span class="prefix">What is your Reqiuem?</span>
     </div>
     <div class="small-9 columns">
-      <textarea  class="whiteout-formInputTextboxFormatting" type="textarea" placeholder="Anonymous" autocorrect="off"></textarea>
+      <textarea id="form-model-message" class="whiteout-formInputTextboxFormatting" type="textarea" placeholder="" autocorrect="off"></textarea>
     </div>
     <br>
         <div class="whiteout-formCheckboxParent">
@@ -77,12 +68,12 @@
           </div>
         </div>
         <div class="whiteout-formCheckboxText">
-           I understand that this website may one day go offline but my Reqiuem will still be accessiable via the Smart Contract located on the Ethereum Blockchain.
+           I understand that this website will one day go offline but my Reqiuem will still be accessiable via the Mass Reqiuem Smart Contract located on the Ethereum Blockchain.
         </div>
         </div>
     <div class="small-9 columns">
       <br>
-    <a href="#" class="button expand fullWidth">Expanded Button</a>
+    <a id="form-model-submit" href="#" class="button expand fullWidth">Release Reqiuem</a>
     </div>
 
     
@@ -98,6 +89,7 @@
   </div>
   <div class="navBarSection topSection navBarSection-right">
     <div class="navBar-specialDiv">
+    <button id="searchForm-searchButton">Find Reqiuem</button>
     <input id="searchForm" type="text" placeholder="Reqiuem ID">
     <button id="navBarButton-find" class="navBarButton" type="button">
       <i class="navBarIcons fa fa-compass navBarElement" aria-hidden="true"></i>
@@ -108,17 +100,16 @@
 
 <div class="row textArea">
   <div class="quote-section ">
-    <span class="quote-source-context">To my lovely Jenny, the only love I never knew.</span>
+    <span id="quote-model-honorary" class="quote-source-context">To my lovely Jenny, the only love I never knew.</span>
   </div>
   <br>
-  <div id="quote-textArea">
+  <div id="quote-model-message">
     Bacon ipsum dolor amet rump pork loin pork tri-tip chicken tongue cow pancetta. Ham hock pork chop turkey beef ribs bacon, ribeye picanha doner salami tenderloin. Pork loin andouille flank pork drumstick. Leberkas doner short loin ham hock landjaeger swine bacon burgdoggen. Alcatra landjaeger shank, corned beef chicken jowl ham hock pork short loin pig kevin tongue.
     Bacon ipsum dolor amet rump pork loin pork tri-tip chicken tongue cow pancetta. Ham hock pork chop turkey beef ribs bacon, ribeye picanha doner salami tenderloin. Pork loin andouille flank pork drumstick. Leberkas doner short loin ham hock landjaeger swine bacon burgdoggen. Alcatra landjaeger shank, corned beef chicken jowl ham hock pork short loin pig kevin tongue.
   </div>
   <br>
-    <div class="quote-section ">
-      <p class="quote-source">Gavin Newman</p>
-      <span class="quote-source-context">Traveled from San Francisco to Lake Tahoe</span>
+    <div class="quote-section">
+      <p id="quote-model-sender" class="quote-source">Gavin Newman</p>
     </div>
 </div>
   

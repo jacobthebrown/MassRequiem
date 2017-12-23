@@ -50,28 +50,69 @@ class requiemApplication {
           this.attachedContract = this.contractObj.at(this.contractAddress);
       }
       
-      findRequiem (capsuleID, onSuccess, onFail) {
-          this.attachedContract.GetRequiem.call(capsuleID,{from: window.web3.eth.accounts[0]}, function(error, result) {
+      findRequiem (id, onSuccess, onFail) {
+          
+          this.attachedContract.RequiemEvent({index: id}, { fromBlock: 0 }).get((error, result) => { 
             
             if (error == undefined) {
-              onSuccess(result);
+              if (result.length == 1) { 
+                onSuccess(result[0]["args"]);
+              }
+              else {
+                onFail(error = {id: 404, message: "No arguments found"});
+              }
             }
             else {
               onFail(error);
             }
-              
+            
           });
+
       }
       
-      releaseRequiem(message) {
+      watchForRequiem (msg, fr, t, onSuccess, onFail) {
+          
+          this.attachedContract.RequiemEvent({message: msg, from: fr, to: t}, { fromBlock: 0 }).watch((error, result) => { 
+            
+            console.log(error)
+            console.log(result)
+            
+            if (error == undefined) {
+              onSuccess(result["args"]);
+            }
+            else {
+              onFail(error);
+            }
+            
+          });
+
+      }
+      
+      releaseRequiem(message, from, to, OnSuccess, onFail) {
               
-              var finneyPrice = window.web3.toWei('25', 'finney');
-              console.log(window.web3.toWei('25', 'finney'));
-              
-              this.attachedContract.DeployRequiem(message, "", {gas: 500000, from: window.web3.eth.accounts[0], value: finneyPrice}, function(error, transactionHash) {
-                  console.log(transactionHash);
-                  console.log(window.web3.toWei('25', 'finney'));
+              this.attachedContract.DeployRequiem(message, from, to, {gas: 500000, from: window.web3.eth.accounts[0]}, function(error, transactionHash, obj) {
+                
+                if (!error) {
+                  console.log("Transaction created.")
+                  window.requiem.watchForRequiem(message, from, to, OnSuccess, onFail);
+                }
               });
+              
+      }
+      
+      getIndex(onSuccess, onFail) {
+        
+        this.attachedContract.index.call(function (error, result) {
+          console.log(result);
+          if (error == undefined) {
+            onSuccess(result["s"]);
+          }
+          else {
+            onFail(error);
+          }
+          
+        })
+        
       }
   
 };
