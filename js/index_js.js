@@ -1,4 +1,5 @@
 /* global $*/	
+/* global vex*/
 
 window.requiem = undefined;
 
@@ -31,12 +32,30 @@ $(document).ready(function() {
     whiteout.css("opacity", "0.0");
     whiteout.css("visibility", "visible");
     
-    $("#whiteout-screen")
-    .velocity({opacity: "1.0"}, {queue:false, duration:2000, complete: function() {
+    if (window.requiem) {
       
-      $(this).velocity({opacity:"0.0"}, {duration:2000, complete: function() {$(this).css("visibility", "hidden");}})
+      $("#whiteout-screen").velocity({opacity: "1.0"}, {queue:false, duration:2000, complete: function() {
       
-    }});
+      window.requiem.getIndex(function(result) {
+        
+      var randomRequiem =  Math.random() * (result - 1) + 1;
+      
+      var changeMessage = function(args) {
+        
+        $("#quote-model-message").text(args["message"]);
+        $("#quote-model-honorary").text(args["to"]);
+        $("#quote-model-sender").text(args["from"]);
+        
+        $("#whiteout-screen").velocity({opacity:"0.0"}, {duration:2000, complete: function() {
+          $("#whiteout-screen").css("visibility", "hidden");
+        }})
+      }
+    
+      window.requiem.findRequiem(randomRequiem, changeMessage);
+        
+      }, function(result) {console.log(result)} );
+      }});
+    }
     
   });
   
@@ -106,35 +125,72 @@ $(document).ready(function() {
 
 $("#form-model-submit").click(function () {
   
-  var resultSender = $("#form-model-sender").val();
-  var resultHonorary = $("#form-model-honorary").val();
-  var resultMessage = $("#form-model-message").val();
+  $("#whiteout-screen").css("opacity", "1.0");
+  $("#whiteout-screen").css("visibility", "visible");
   
-  if (window.requiem) {
-    window.requiem.releaseRequiem(resultMessage, resultSender, resultHonorary, function(args) {console.log(args)});
-  }
+  $("#white-closeButton").click();
   
-})
-
-$("#navBarButton-shuffle").click(function () {
-  if (window.requiem) {
-    window.requiem.getIndex(function(result) {
-      
-      var randomRequiem =  Math.random() * (result - 1) + 1;
-      
-      console.log(randomRequiem + " / " + result);
-      
-      var changeMessage = function(args) {
+  $("#whiteout-screen").velocity({opacity: "1.0"}, {queue:false, duration:0, complete: function() {
+    
+    var resultSender = $("#form-model-sender").val();
+    var resultHonorary = $("#form-model-honorary").val();
+    var resultMessage = $("#form-model-message").val();
+    
+    if (window.requiem) {
+      window.requiem.releaseRequiem(resultMessage, resultSender, resultHonorary, function(args) {
+        console.log(args)
         $("#quote-model-message").text(args["message"]);
         $("#quote-model-honorary").text(args["to"]);
         $("#quote-model-sender").text(args["from"]);
-        console.log(args);
-      }
+
+        vex.dialog.alert("Your Requiem ID is: '" + args["index"]["c"][0]  + "' be sure to write it down somewhere!")
+        
+        $("#whiteout-screen").velocity({opacity:"0.0"}, {duration:2000, complete: function() {
+          $("#whiteout-screen").css("visibility", "hidden");
+        }})
+      });
+    }
+    
+  }});
   
-  window.requiem.findRequiem(randomRequiem, changeMessage);
+})
+
+$('#searchForm').on('keypress', function (e) {
+      if(e.which === 13){
+
+         //Disable textbox to prevent multiple submit
+         $(this).attr("disabled", "disabled");
+
+    var whiteout = $("#whiteout-screen");
+    whiteout.css("opacity", "0.0");
+    whiteout.css("visibility", "visible");
+    
+    if (window.requiem) {
       
-    }, function(result) {console.log(result)} );
-  }
+      $("#whiteout-screen").velocity({opacity: "1.0"}, {queue:false, duration:2000, complete: function() {
+        
+      var requiemID =  parseInt($("#searchForm").val());
+      
+      var changeMessage = function(args) {
+        
+        $("#quote-model-message").text(args["message"]);
+        $("#quote-model-honorary").text(args["to"]);
+        $("#quote-model-sender").text(args["from"]);
+        
+        $("#whiteout-screen").velocity({opacity:"0.0"}, {duration:2000, complete: function() {
+          $("#whiteout-screen").css("visibility", "hidden");
+        }})
+      }
+    
+      window.requiem.findRequiem(requiemID, changeMessage);
+        
+      
+      }});
+    }
+
+         //Enable the textbox again if needed.
+         $(this).removeAttr("disabled");
+      }
 });
 
 

@@ -30,6 +30,7 @@ class requiemApplication {
       this.attachedContract = undefined;
       this.contractAddress = undefined;
       this.metaMaskAccount = undefined;
+      this.currentTransactionEvent = undefined;
       
     }
     
@@ -72,10 +73,13 @@ class requiemApplication {
       
       watchForRequiem (msg, fr, t, onSuccess, onFail) {
           
-          this.attachedContract.RequiemEvent({message: msg, from: fr, to: t}, { fromBlock: 0 }).watch((error, result) => { 
+          this.currentTransactionEvent = this.attachedContract.RequiemEvent({ fromBlock: 0 }).watch((error, result) => {
             
             console.log(error)
             console.log(result)
+            
+            this.currentTransactionEvent.stopWatching();
+            this.currentTransactionEvent = undefined;
             
             if (error == undefined) {
               onSuccess(result["args"]);
@@ -95,6 +99,7 @@ class requiemApplication {
                 if (!error) {
                   console.log("Transaction created.")
                   window.requiem.watchForRequiem(message, from, to, OnSuccess, onFail);
+                  
                 }
               });
               
@@ -102,10 +107,10 @@ class requiemApplication {
       
       getIndex(onSuccess, onFail) {
         
-        this.attachedContract.index.call(function (error, result) {
+        this.attachedContract.index(function (error, result) {
           console.log(result);
           if (error == undefined) {
-            onSuccess(result["s"]);
+            onSuccess(result["c"][0]);
           }
           else {
             onFail(error);
