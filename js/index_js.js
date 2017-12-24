@@ -87,7 +87,7 @@ $(document).ready(function() {
       if (this.isToggled === false) {
         $(this).velocity({backgroundColor:"#FFF"}, {queue:false, duration:1000});
         $(this).find("i").first().velocity({color:"#000"}, {queue:false, duration:1000});
-        $("#searchForm").velocity({width: "50%", opacity:1.0}, { queue: false, duration: 1500 })
+        $("#searchForm").velocity({width: "100%", opacity:1.0}, { queue: false, duration: 1500 })
       }
       else {
         $(this).velocity({backgroundColor:"#000"}, {queue:false, duration:1000});
