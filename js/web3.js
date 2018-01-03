@@ -6,18 +6,18 @@ global $
 
 var reqApp;
 
-function loadWeb3(callbackOnError, callbackOnSuccess) {
+function loadWeb3(onSuccess, onFail) {
 
   if (typeof web3 !== 'undefined') 
   {
     console.log("MetaMask Found");
     window.web3 = new Web3(web3.currentProvider);
-    callbackOnSuccess(new requiemApplication());
+    onSuccess(new requiemApplication, onFail);
     
     return;
   } 
 
-    callbackOnError("Failed to connect to Metamask");
+    onFail("Failed to connect to Metamask");
     return;
 
 }
@@ -34,14 +34,14 @@ class requiemApplication {
       
     }
     
-    onLoad() {
+    onLoad(onFail) {
       
           // do web3 checks
       
           this.metaMaskAccount = window.web3.eth.accounts[0];
           
           if (this.metaMaskAccount === undefined) {
-              console.log("No ethereum account was found.");
+              onFail("No ethereum account was found.");
           }
           else {
             console.log("Metamask Account loaded, " + this.metaMaskAccount)
@@ -53,18 +53,18 @@ class requiemApplication {
       
       findRequiem (id, onSuccess, onFail) {
           
-          this.attachedContract.RequiemEvent({index: id}, { fromBlock: 0 }).get((error, result) => { 
+          this.attachedContract.RequiemEvent({index: id}, { fromBlock: 0, toBlock: 'latest' }).get(function(error, result) { 
             
             if (error == undefined) {
-              if (result.length == 1) { 
+              if (result.length >= 1) { 
                 onSuccess(result[0]["args"]);
               }
               else {
-                onFail(error = {id: 404, message: "No arguments found"});
+                onFail({result: error, id: 404, message: "No arguments found"});
               }
             }
             else {
-              onFail(error);
+              onFail({result: error, id: 404, message: "Error message found."});
             }
             
           });
@@ -73,7 +73,7 @@ class requiemApplication {
       
       watchForRequiem (msg, fr, t, onSuccess, onFail) {
           
-          this.currentTransactionEvent = this.attachedContract.RequiemEvent({ fromBlock: 0 }).watch((error, result) => {
+          this.currentTransactionEvent = this.attachedContract.RequiemEvent({ fromBlock: 0, toBlock: 'latest' }).watch((error, result) => {
             
             console.log(error)
             console.log(result)

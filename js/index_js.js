@@ -196,12 +196,16 @@ $('#searchForm').on('keypress', function (e) {
 
 });
 
-function loadWeb3_callbackOnError() {
+function loadWeb3_callbackOnError(result, error) {
+    
+      console.log(error);
   
+      $("#quote-model-message").text('"It looks like you don\'t have the chrome extension \'MetaMask\' (Embedded Web3 Interaction dApp Enabler) installed, this is cruical to running this dApp. Also make sure you are on the Kovan Test Network after you install MetaMask!"');
+      $("#quote-model-sender").text("Jacob Brown, Creator of Mass Requiem");
   
 }
 
-function loadWeb3_callbackOnSuccess(generatedReq) {
+function loadWeb3_callbackOnSuccess(generatedReq, onFail) {
   
   console.log(generatedReq);
   window.requiem = generatedReq;
@@ -209,23 +213,28 @@ function loadWeb3_callbackOnSuccess(generatedReq) {
   window.requiem.contractABI = [{"constant":false,"inputs":[{"name":"message","type":"string"},{"name":"from","type":"string"},{"name":"to","type":"string"}],"name":"DeployRequiem","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"index","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"index","type":"uint256"},{"indexed":false,"name":"message","type":"string"},{"indexed":false,"name":"from","type":"string"},{"indexed":false,"name":"to","type":"string"}],"name":"RequiemEvent","type":"event"}];
   window.requiem.contractAddress ="0x48230b4231669aceb00265d1115261f8222ab997";
   
-  window.requiem.onLoad();
+  window.requiem.onLoad(onFail);
   
-  var changeMessage = function(args) {
+  var onSuccess = function(args) {
     $("#quote-model-message").text(args["message"]);
     $("#quote-model-honorary").text(args["to"]);
     $("#quote-model-sender").text(args["from"]);
     console.log(args);
   }
   
-  window.requiem.findRequiem(2, changeMessage);
+  var onFail = function(args) {
+      $("#quote-model-message").text("\"Make sure you are on the Kovan Test Network! If you have switched to the Kovan Test Network already, then you probably have to restart your browser\"");
+      $("#quote-model-sender").text("Jacob Brown, Creator of Mass Requiem");
+  }
+  
+  window.requiem.findRequiem(2, onSuccess, onFail);
   
   
   
 }
 
 window.addEventListener('load', function() {
-  loadWeb3(loadWeb3_callbackOnError, loadWeb3_callbackOnSuccess) 
+  loadWeb3(loadWeb3_callbackOnSuccess, loadWeb3_callbackOnError); 
 });
 
 function loadRequiem(id) {
