@@ -1,4 +1,4 @@
-# MassRequiem.io for Kovan Network Testing.
+# Go to MassRequiem.io to test on the Kovan Test Network.
 
 # Mass Requiem
 Memorial smart contract with a front end website for Ethereum for posting eternal messages to the world or to loved ones.
