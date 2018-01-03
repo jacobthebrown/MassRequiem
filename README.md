@@ -5,8 +5,8 @@ Memorial smart contract with a front end website for Ethereum for posting eterna
 
 # Media
 
-![1st View](https://github.com/jacobthebrown/MassRequiem/doc/Picture_1.png?raw=true)
-![2nd View](https://github.com/jacobthebrown/MassRequiem/doc/Picture_2.png?raw=true)
+![1st View](https://github.com/jacobthebrown/MassRequiem/blob/master/doc/Picture_1.png?raw=true)
+![2nd View](https://github.com/jacobthebrown/MassRequiem/blob/master/doc/Picture_2.png?raw=true)
 
 ## Built With
 
